@@ -1,5 +1,6 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class NGOMouseLookInputSystem : NetworkBehaviour
@@ -20,6 +21,7 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
   [Header("Options")]
   [SerializeField] private bool lockCursorOnSpawn = true;
   [SerializeField] private bool invertY = false;
+  [SerializeField] private bool relockOnClick = true;
 
   private float yaw;
   private float pitch;
@@ -73,6 +75,20 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
     if (!IsOwner) return;
     if (cameraPivot == null || lookAction == null) return;
 
+    if (Cursor.lockState != CursorLockMode.Locked)
+    {
+      if (relockOnClick && Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
+      {
+        bool overUi = EventSystem.current != null && EventSystem.current.IsPointerOverGameObject();
+        if (!overUi)
+        {
+          Cursor.lockState = CursorLockMode.Locked;
+          Cursor.visible = false;
+        }
+      }
+      return;
+    }
+
     Vector2 look = lookAction.ReadValue<Vector2>();
 
     float mouseX = look.x * sensX * Time.deltaTime;
@@ -92,6 +108,15 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
       Cursor.lockState = CursorLockMode.None;
       Cursor.visible = true;
     }
+  }
+
+  private void OnApplicationFocus(bool hasFocus)
+  {
+    if (!IsOwner) return;
+    if (!hasFocus) return;
+    if (!lockCursorOnSpawn) return;
+    Cursor.lockState = CursorLockMode.Locked;
+    Cursor.visible = false;
   }
 
   private static float NormalizeAngle(float angle)
