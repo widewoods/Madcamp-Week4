@@ -80,16 +80,30 @@ public class PlayerInteractor : NetworkBehaviour
     return null;
   }
 
+  bool InRange(Transform player, Transform target, float range)
+  {
+    float r2 = range * range;
+    return (player.position - target.position).sqrMagnitude <= r2;
+  }
+
+
   [Rpc(SendTo.Server)]
   private void RequestInteractServerRpc(ulong targetNetworkObjectId, RpcParams rpcParams = default)
   {
+    ulong senderId = rpcParams.Receive.SenderClientId;
+
+    var playerObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(senderId);
+    if (playerObj == null) return;
+
     if (!NetworkManager.Singleton.SpawnManager.SpawnedObjects.TryGetValue(targetNetworkObjectId, out var netObj))
       return;
 
     var interactable = netObj.GetComponent<InteractableBase>();
     if (interactable == null)
       return;
+    if (!InRange(playerObj.transform, netObj.transform, interactRange))
+      return;
 
-    interactable.ServerInteract(rpcParams.Receive.SenderClientId);
+    interactable.ServerInteract(senderId);
   }
 }

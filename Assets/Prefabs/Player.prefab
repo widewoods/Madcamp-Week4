@@ -316,6 +316,8 @@ GameObject:
   - component: {fileID: -3990987954074599865}
   - component: {fileID: 1086886418262823875}
   - component: {fileID: 4918226098568557589}
+  - component: {fileID: -7055623278268543023}
+  - component: {fileID: -4924802593333407281}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -352,7 +354,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 2502281542
+  GlobalObjectIdHash: 77169019
   InScenePlacedSourceGlobalObjectIdHash: 2502281542
   DeferredDespawnTick: 0
   Ownership: 1
@@ -467,16 +469,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::NgoMouseLookInputSystem
   ShowTopMostFoldoutHeaderGroup: 1
   cameraPivot: {fileID: 5849388142004511984}
-  playerInput: {fileID: 0}
-  lookAction:
-    m_Name: Look
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: 8bff7a7d-678a-476f-805b-6c0181a6d16f
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
+  playerInput: {fileID: -3990987954074599865}
   sensX: 200
   sensY: 200
   minPitch: -80
@@ -528,7 +521,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   playerCamera: {fileID: 4596884005110081659}
   playerInput: {fileID: -3990987954074599865}
-  interactRange: 5
+  interactRange: 6
   interactMask:
     serializedVersion: 2
     m_Bits: 64
@@ -545,4 +538,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a512561c80654475d8fae65f100ea62d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LocalPlayerSetup
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &-7055623278268543023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666117378588110265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8ced91c915b34f0aaf3315a3966291c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTeleport
+  ShowTopMostFoldoutHeaderGroup: 1
+--- !u!114 &-4924802593333407281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666117378588110265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08d77fd3e3b6c49fab8094dc72b7c595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerSeating
   ShowTopMostFoldoutHeaderGroup: 1

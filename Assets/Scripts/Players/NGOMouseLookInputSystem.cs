@@ -2,12 +2,12 @@ using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class NgoMouseLookInputSystem : NetworkBehaviour
+public class NGOMouseLookInputSystem : NetworkBehaviour
 {
   [Header("References")]
   [SerializeField] private Transform cameraPivot;
   [SerializeField] private PlayerInput playerInput;
-  [SerializeField] private InputAction lookAction;
+  private InputAction lookAction;
 
   [Header("Sensitivity")]
   [SerializeField] private float sensX = 200f;
@@ -50,8 +50,16 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
     }
 
     playerInput.enabled = true;
-    lookAction = playerInput.actions["Look"];
-    lookAction.Enable();
+    EnsureAction();
+    EnableAction();
+  }
+
+  private void OnEnable()
+  {
+    if (!IsOwner) return;
+    if (playerInput == null) playerInput = GetComponent<PlayerInput>();
+    EnsureAction();
+    EnableAction();
   }
 
   private void OnDisable()
@@ -91,5 +99,16 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
     while (angle > 180f) angle -= 360f;
     while (angle < -180f) angle += 360f;
     return angle;
+  }
+
+  private void EnsureAction()
+  {
+    if (lookAction == null && playerInput != null)
+      lookAction = playerInput.actions["Look"];
+  }
+
+  private void EnableAction()
+  {
+    lookAction?.Enable();
   }
 }

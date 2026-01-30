@@ -29,10 +29,16 @@ public class NGOPlayerMovement : NetworkBehaviour
     }
 
     playerInput.enabled = true;
-    moveAction = playerInput.actions["Move"];
-    moveAction.Enable();
-    jumpAction = playerInput.actions["Jump"];
-    jumpAction.Enable();
+    EnsureActions();
+    EnableActions();
+  }
+
+  void OnEnable()
+  {
+    if (!IsOwner) return;
+    if (playerInput == null) playerInput = GetComponent<PlayerInput>();
+    EnsureActions();
+    EnableActions();
   }
 
   void OnDisable()
@@ -48,9 +54,24 @@ public class NGOPlayerMovement : NetworkBehaviour
       controller = gameObject.AddComponent<CharacterController>();
   }
 
+  private void EnsureActions()
+  {
+    if (moveAction == null && playerInput != null)
+      moveAction = playerInput.actions["Move"];
+    if (jumpAction == null && playerInput != null)
+      jumpAction = playerInput.actions["Jump"];
+  }
+
+  private void EnableActions()
+  {
+    moveAction?.Enable();
+    jumpAction?.Enable();
+  }
+
   void Update()
   {
     if (!IsOwner) return;
+    if (!controller.enabled) return;
 
     Vector2 moveValue = moveAction.ReadValue<Vector2>();
     Vector3 input = new Vector3(moveValue.x, 0f, moveValue.y);
