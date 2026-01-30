@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 public class NGOPlayerMovement : NetworkBehaviour
 {
   [SerializeField] float moveSpeed = 5f;
-  [SerializeField] float turnSpeed = 720f;
 
   [SerializeField] float gravity = -20f;
   [SerializeField] float jumpHeight = 1.5f;
+
+  [SerializeField] PlayerInput playerInput;
 
   CharacterController controller;
   InputAction moveAction;
@@ -16,13 +17,35 @@ public class NGOPlayerMovement : NetworkBehaviour
 
   private float verticalVelocity;
 
+  public override void OnNetworkSpawn()
+  {
+    if (playerInput == null) playerInput = GetComponent<PlayerInput>();
+
+    if (!IsOwner)
+    {
+      playerInput.enabled = false;
+      enabled = false;
+      return;
+    }
+
+    playerInput.enabled = true;
+    moveAction = playerInput.actions["Move"];
+    moveAction.Enable();
+    jumpAction = playerInput.actions["Jump"];
+    jumpAction.Enable();
+  }
+
+  void OnDisable()
+  {
+    moveAction?.Disable();
+    jumpAction?.Disable();
+  }
+
   void Awake()
   {
     controller = GetComponent<CharacterController>();
     if (controller == null)
       controller = gameObject.AddComponent<CharacterController>();
-    moveAction = InputSystem.actions.FindAction("Move");
-    jumpAction = InputSystem.actions.FindAction("Jump");
   }
 
   void Update()
@@ -45,7 +68,7 @@ public class NGOPlayerMovement : NetworkBehaviour
       verticalVelocity = Mathf.Sqrt(jumpHeight * -2f * gravity);
     }
 
-    verticalVelocity += gravity * Time.deltaTime;
+    verticalVelocity += gravity * 1.3f * Time.deltaTime;
 
     Vector3 velocity = moveDir * moveSpeed;
     velocity.y = verticalVelocity;

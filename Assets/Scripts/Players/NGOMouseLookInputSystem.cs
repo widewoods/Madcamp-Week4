@@ -5,12 +5,13 @@ using UnityEngine.InputSystem;
 public class NgoMouseLookInputSystem : NetworkBehaviour
 {
   [Header("References")]
-  [SerializeField] private Transform cameraPivot;         // pitch
-  [SerializeField] private InputAction lookAction; // Vector2 (Mouse delta / Right stick)
+  [SerializeField] private Transform cameraPivot;
+  [SerializeField] private PlayerInput playerInput;
+  [SerializeField] private InputAction lookAction;
 
   [Header("Sensitivity")]
-  [SerializeField] private float sensX = 200f; // yaw
-  [SerializeField] private float sensY = 200f; // pitch
+  [SerializeField] private float sensX = 200f;
+  [SerializeField] private float sensY = 200f;
 
   [Header("Clamp")]
   [SerializeField] private float minPitch = -80f;
@@ -25,9 +26,11 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
 
   public override void OnNetworkSpawn()
   {
-    // Only the owning client should read input / control camera
+    if (playerInput == null) playerInput = GetComponent<PlayerInput>();
+
     if (!IsOwner)
     {
+      playerInput.enabled = false;
       enabled = false;
       return;
     }
@@ -38,7 +41,6 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
       Cursor.visible = false;
     }
 
-    // Init angles to avoid snapping
     yaw = transform.eulerAngles.y;
 
     if (cameraPivot != null)
@@ -47,7 +49,14 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
       pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
     }
 
-    lookAction = InputSystem.actions.FindAction("Look");
+    playerInput.enabled = true;
+    lookAction = playerInput.actions["Look"];
+    lookAction.Enable();
+  }
+
+  private void OnDisable()
+  {
+    lookAction?.Disable();
   }
 
 
@@ -58,7 +67,6 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
 
     Vector2 look = lookAction.ReadValue<Vector2>();
 
-    // Mouse delta is already "per-frame"-ish; scaling by deltaTime keeps feel stable across FPS.
     float mouseX = look.x * sensX * Time.deltaTime;
     float mouseY = look.y * sensY * Time.deltaTime;
 
@@ -71,7 +79,6 @@ public class NgoMouseLookInputSystem : NetworkBehaviour
     transform.rotation = Quaternion.Euler(0f, yaw, 0f);
     cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
 
-    // Optional: ESC to unlock cursor (desktop convenience)
     if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
     {
       Cursor.lockState = CursorLockMode.None;
