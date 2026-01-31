@@ -67,7 +67,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.14516068
+      value: -0.163
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -97,11 +97,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1539478753
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 9
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -111,6 +124,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8383740064580165313}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1664081892078184124}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8648220062797753538}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!4 &329959266542711977 stripped
 Transform:
@@ -130,7 +149,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7212985035026654976}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -172,6 +191,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.00003051758}
+--- !u!114 &1664081892078184124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212985035026654976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8648220062797753538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7212985035026654976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1001 &3194314963343503738
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -198,7 +280,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.535
+      value: 0.628
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -228,11 +310,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4124719577
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -242,6 +337,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1065423156748531097}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5212364454560087599}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8666745425559322576}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!4 &3240746017685450879 stripped
 Transform:
@@ -261,7 +362,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5509198449460880342}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -303,6 +404,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.000015258793}
+--- !u!114 &5212364454560087599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509198449460880342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8666745425559322576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5509198449460880342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1001 &3563942935055005654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -329,7 +493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.105838776
+      value: 0.121
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -359,11 +523,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 986750178
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -373,6 +550,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5952062585138478721}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2497195726270692571}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8866838863792813215}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!4 &3591804227956881107 stripped
 Transform:
@@ -392,7 +575,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5860675643997758842}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -434,6 +617,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.000015258793}
+--- !u!114 &2497195726270692571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860675643997758842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8866838863792813215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5860675643997758842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1001 &3941546874061612839
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -452,7 +698,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.6528168
+      value: -0.751
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.y
@@ -490,11 +736,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 2841492391
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -504,6 +763,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 8070564455493697712}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5278489467686327618}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8788922683503442105}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!4 &3899591858524038690 stripped
 Transform:
@@ -523,7 +788,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6238551711117227403}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -565,6 +830,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: -0.0019187927, z: 0.00003051758}
+--- !u!114 &5278489467686327618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238551711117227403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8788922683503442105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6238551711117227403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1001 &4189691676201288293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -583,7 +911,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21182251
+      value: -0.253
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.y
@@ -591,7 +919,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.3658409
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -621,11 +949,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 227479752
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -635,6 +976,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2460149524050557807}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3987954334639009520}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8478200688132058127}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!4 &4218126536131822432 stripped
 Transform:
@@ -654,7 +1001,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6486344703881105609}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -696,6 +1043,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: -0.0019187927, z: 0.000015258793}
+--- !u!114 &3987954334639009520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486344703881105609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8478200688132058127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6486344703881105609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!1001 &4924110784800355619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -722,7 +1132,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.6151619
+      value: -0.777
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -752,11 +1162,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 74315910
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 10
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -766,6 +1189,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1431147251320864051}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 732183802278931946}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6825834660859933927}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!1 &2627026773220763535 stripped
 GameObject:
@@ -780,7 +1209,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2627026773220763535}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -822,6 +1251,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: -0.0019187927, z: 0.000015258793}
+--- !u!114 &732183802278931946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627026773220763535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &6825834660859933927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2627026773220763535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!4 &4969996477076812838 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
@@ -845,7 +1337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.21182251
+      value: -0.246
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.y
@@ -883,11 +1375,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 1096052288
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -897,6 +1402,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3801620060233043865}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3516843465760408382}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3876215797016150587}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!1 &3668646317101705898 stripped
 GameObject:
@@ -911,7 +1422,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3668646317101705898}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -953,6 +1464,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.00003051758}
+--- !u!114 &3516843465760408382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668646317101705898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &3876215797016150587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3668646317101705898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!4 &5936955951079553283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
@@ -984,7 +1558,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.780838
+      value: 0.953
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1014,11 +1588,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 3682077448
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1028,6 +1615,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1277105652368778602}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2070243138462660304}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8775931572785376744}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!1 &4166801491389754221 stripped
 GameObject:
@@ -1042,7 +1635,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4166801491389754221}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1084,6 +1677,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.000015258793}
+--- !u!114 &2070243138462660304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166801491389754221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8775931572785376744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4166801491389754221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!4 &6439752162670164164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
@@ -1115,7 +1771,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.41815948
+      value: -0.478
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1145,11 +1801,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 4033553137
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 6
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1159,6 +1828,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4613798286029175567}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8733955184103484267}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8448865136500020485}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!1 &4452176814737150700 stripped
 GameObject:
@@ -1173,7 +1848,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4452176814737150700}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1215,6 +1890,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.000015258793}
+--- !u!114 &8733955184103484267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452176814737150700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &8448865136500020485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4452176814737150700}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!4 &6720677556849983813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
@@ -1246,7 +1984,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.31684113
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1276,11 +2014,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: GlobalObjectIdHash
+      value: 795857179
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: SceneMigrationSynchronization
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5186208841778359393, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      propertyPath: InScenePlacedSourceGlobalObjectIdHash
+      value: 1120299094
+      objectReference: {fileID: 0}
     - target: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       propertyPath: m_Name
       value: Pin 8
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1103423427793209674, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1290,6 +2041,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3485464253917721770}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3014215425631779750}
+    - targetCorrespondingSourceObject: {fileID: 6926789415015699116, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7096898591759075019}
   m_SourcePrefab: {fileID: 100100000, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}
 --- !u!1 &1035043149241532789 stripped
 GameObject:
@@ -1304,7 +2061,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035043149241532789}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 3.5
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -1346,6 +2103,69 @@ CapsuleCollider:
   m_Height: 301.4
   m_Direction: 2
   m_Center: {x: -0.000104904175, y: 0.000034332283, z: 0.000015258793}
+--- !u!114 &3014215425631779750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035043149241532789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkTransform
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkTransformExpanded: 0
+  AutoOwnerAuthorityTickOffset: 1
+  PositionInterpolationType: 0
+  RotationInterpolationType: 0
+  ScaleInterpolationType: 0
+  PositionLerpSmoothing: 1
+  PositionMaxInterpolationTime: 0.1
+  RotationLerpSmoothing: 1
+  RotationMaxInterpolationTime: 0.1
+  ScaleLerpSmoothing: 1
+  ScaleMaxInterpolationTime: 0.1
+  AuthorityMode: 0
+  TickSyncChildren: 0
+  UseUnreliableDeltas: 0
+  SyncPositionX: 1
+  SyncPositionY: 1
+  SyncPositionZ: 1
+  SyncRotAngleX: 1
+  SyncRotAngleY: 1
+  SyncRotAngleZ: 1
+  SyncScaleX: 1
+  SyncScaleY: 1
+  SyncScaleZ: 1
+  PositionThreshold: 0.001
+  RotAngleThreshold: 0.01
+  ScaleThreshold: 0.01
+  UseQuaternionSynchronization: 0
+  UseQuaternionCompression: 0
+  UseHalfFloatPrecision: 0
+  InLocalSpace: 0
+  SwitchTransformSpaceWhenParented: 0
+  Interpolate: 1
+  SlerpPosition: 0
+--- !u!114 &7096898591759075019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035043149241532789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c0be61502bb534f922ebb746851216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.Components.NetworkRigidbody
+  ShowTopMostFoldoutHeaderGroup: 1
+  NetworkRigidbodyBaseExpanded: 0
+  UseRigidBodyForMotion: 0
+  AutoUpdateKinematicState: 1
+  AutoSetKinematicOnDespawn: 1
 --- !u!4 &7985126070181876444 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 48710417126179077, guid: cda4ebb8d7cf94f58ad96a82de2e8844, type: 3}

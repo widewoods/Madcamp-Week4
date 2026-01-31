@@ -25,6 +25,12 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
 
   private float yaw;
   private float pitch;
+  private float yawVelocity;
+  private float pitchVelocity;
+
+  [Header("Smoothing")]
+  [SerializeField] private float lookSmoothTime = 0.05f;
+  [SerializeField] private float lookMaxSpeed = 999f;
 
   public override void OnNetworkSpawn()
   {
@@ -96,9 +102,12 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
 
     if (!invertY) mouseY = -mouseY;
 
-    yaw += mouseX;
-    pitch += mouseY;
-    pitch = Mathf.Clamp(pitch, minPitch, maxPitch);
+    float targetYaw = yaw + mouseX;
+    float targetPitch = pitch + mouseY;
+    targetPitch = Mathf.Clamp(targetPitch, minPitch, maxPitch);
+
+    yaw = Mathf.SmoothDamp(yaw, targetYaw, ref yawVelocity, lookSmoothTime, lookMaxSpeed);
+    pitch = Mathf.SmoothDamp(pitch, targetPitch, ref pitchVelocity, lookSmoothTime, lookMaxSpeed);
 
     transform.rotation = Quaternion.Euler(0f, yaw, 0f);
     cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);

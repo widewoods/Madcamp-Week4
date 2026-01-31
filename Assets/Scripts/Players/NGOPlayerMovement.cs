@@ -5,6 +5,10 @@ using UnityEngine.InputSystem;
 public class NGOPlayerMovement : NetworkBehaviour
 {
   [SerializeField] float moveSpeed = 5f;
+  [SerializeField] float acceleration = 12f;
+  [SerializeField] float deceleration = 16f;
+  [SerializeField] float iceAcceleration = 3f;
+  [SerializeField] float iceDeceleration = 2f;
 
   [SerializeField] float gravity = -20f;
   [SerializeField] float jumpHeight = 1.5f;
@@ -16,6 +20,8 @@ public class NGOPlayerMovement : NetworkBehaviour
   InputAction jumpAction;
 
   private float verticalVelocity;
+  private Vector3 horizontalVelocity;
+  private bool onIce;
 
   public override void OnNetworkSpawn()
   {
@@ -91,10 +97,22 @@ public class NGOPlayerMovement : NetworkBehaviour
 
     verticalVelocity += gravity * 1.3f * Time.deltaTime;
 
-    Vector3 velocity = moveDir * moveSpeed;
+    float accel = onIce ? iceAcceleration : acceleration;
+    float decel = onIce ? iceDeceleration : deceleration;
+
+    Vector3 targetHorizontal = moveDir * moveSpeed;
+    float rate = targetHorizontal.sqrMagnitude > 0.001f ? accel : decel;
+    horizontalVelocity = Vector3.Lerp(horizontalVelocity, targetHorizontal, rate * Time.deltaTime);
+
+    Vector3 velocity = horizontalVelocity;
     velocity.y = verticalVelocity;
 
     controller.Move(velocity * Time.deltaTime);
+  }
+
+  public void SetIce(bool value)
+  {
+    onIce = value;
   }
 
 }

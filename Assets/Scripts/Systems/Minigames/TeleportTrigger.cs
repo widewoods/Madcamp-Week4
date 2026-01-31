@@ -1,7 +1,7 @@
 using Unity.Netcode;
 using UnityEngine;
 
-public class ReturnToClassTrigger : NetworkBehaviour
+public class TeleportTrigger : NetworkBehaviour
 {
   [SerializeField] private Transform teleportTransform;
 
