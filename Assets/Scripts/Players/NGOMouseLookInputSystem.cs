@@ -97,8 +97,8 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
 
     Vector2 look = lookAction.ReadValue<Vector2>();
 
-    float mouseX = look.x * sensX * Time.deltaTime;
-    float mouseY = look.y * sensY * Time.deltaTime;
+    float mouseX = look.x * sensX * Time.fixedDeltaTime;
+    float mouseY = look.y * sensY * Time.fixedDeltaTime;
 
     if (!invertY) mouseY = -mouseY;
 

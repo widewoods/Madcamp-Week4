@@ -1,6 +1,6 @@
 using TMPro;
-using Unity.Burst.Intrinsics;
 using Unity.Collections;
+using Unity.Netcode;
 using UnityEngine;
 
 public class PlayerNameTag : MonoBehaviour
@@ -11,20 +11,25 @@ public class PlayerNameTag : MonoBehaviour
   private void Awake()
   {
     if (playerName == null) playerName = GetComponentInParent<PlayerName>();
-
   }
 
   private void OnEnable()
   {
-    playerName.playerName.OnValueChanged += HandleNameChanged;
+    if (playerName != null)
+      playerName.playerName.OnValueChanged += HandleNameChanged;
+    if (NetworkManager.Singleton != null)
+      NetworkManager.Singleton.OnClientConnectedCallback += UpdateName;
   }
 
   private void OnDisable()
   {
-    playerName.playerName.OnValueChanged -= HandleNameChanged;
+    if (playerName != null)
+      playerName.playerName.OnValueChanged -= HandleNameChanged;
+    if (NetworkManager.Singleton != null)
+      NetworkManager.Singleton.OnClientConnectedCallback -= UpdateName;
   }
 
-  private void UpdateName()
+  private void UpdateName(ulong clientId)
   {
     if (nameText == null || playerName == null) return;
     nameText.text = playerName.Name;
@@ -32,6 +37,6 @@ public class PlayerNameTag : MonoBehaviour
 
   private void HandleNameChanged(FixedString64Bytes previous, FixedString64Bytes current)
   {
-    UpdateName();
+    UpdateName(0);
   }
 }
