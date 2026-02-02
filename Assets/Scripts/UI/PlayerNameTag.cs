@@ -1,4 +1,6 @@
 using TMPro;
+using Unity.Burst.Intrinsics;
+using Unity.Collections;
 using UnityEngine;
 
 public class PlayerNameTag : MonoBehaviour
@@ -9,21 +11,27 @@ public class PlayerNameTag : MonoBehaviour
   private void Awake()
   {
     if (playerName == null) playerName = GetComponentInParent<PlayerName>();
+
   }
 
   private void OnEnable()
   {
-    UpdateName();
+    playerName.playerName.OnValueChanged += HandleNameChanged;
   }
 
-  private void Update()
+  private void OnDisable()
   {
-    if (playerName == null) return;
+    playerName.playerName.OnValueChanged -= HandleNameChanged;
   }
 
   private void UpdateName()
   {
     if (nameText == null || playerName == null) return;
     nameText.text = playerName.Name;
+  }
+
+  private void HandleNameChanged(FixedString64Bytes previous, FixedString64Bytes current)
+  {
+    UpdateName();
   }
 }

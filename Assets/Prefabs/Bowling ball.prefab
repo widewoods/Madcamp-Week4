@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BowlingBallRoller
   ShowTopMostFoldoutHeaderGroup: 1
-  rollForce: 16
+  rollForce: 12
   upwardForce: 0
   rb: {fileID: 1759223132305854736}
 --- !u!114 &-6937762395755009221

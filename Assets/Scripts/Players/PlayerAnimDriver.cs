@@ -1,9 +1,12 @@
 using Unity.Netcode;
 using UnityEngine;
+using UnityEngine.SocialPlatforms;
 
 public class PlayerAnimDriver : NetworkBehaviour
 {
   [SerializeField] Animator animator;
+  [SerializeField] BowlingBallRollInput bowlingBallRollInput;
+  [SerializeField] GameObject ball;
   [SerializeField] CharacterController cc;
 
   void Reset()
@@ -21,5 +24,13 @@ public class PlayerAnimDriver : NetworkBehaviour
     v.y = 0f;
 
     animator.SetFloat("Speed", v.magnitude);
+  }
+
+  public void BowlingTrigger()
+  {
+    bowlingBallRollInput.bowlingThrown = true;
+    ball.SetActive(false);
+
+    animator.SetTrigger("Idle");
   }
 }
