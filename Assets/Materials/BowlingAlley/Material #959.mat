@@ -113,7 +113,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _REFLECTIONS_IOR: 1.52
-    - _REFLECTIONS_ROUGHNESS: 0.165
+    - _REFLECTIONS_ROUGHNESS: 0.811
     - _REFLECTIONS_WEIGHT: 0.6
     - _ReceiveShadows: 1
     - _Smoothness: 0

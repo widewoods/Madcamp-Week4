@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Minigame
+  - MAST_Holder
   layers:
   - Default
   - TransparentFX
