@@ -9,6 +9,9 @@ public class BowlingBallRollInput : NetworkBehaviour, IMinigameUseHandler
   [SerializeField] GameObject ball;
   [SerializeField] private Animator animator;
   [SerializeField] private float spawnDistance = 1.2f;
+  [SerializeField] private float moveDistance = 0.8f;
+  [SerializeField] private float moveDuration = 0.45f;
+  [SerializeField] private AnimationCurve moveCurve = AnimationCurve.EaseInOut(0f, 0f, 1f, 1f);
 
   public bool bowlingThrown = false;
 
@@ -58,8 +61,29 @@ public class BowlingBallRollInput : NetworkBehaviour, IMinigameUseHandler
     animator.SetTrigger("Bowling");
     var playerMovement = GetComponent<NGOPlayerMovement>();
     var cameraMovement = GetComponent<NGOMouseLookInputSystem>();
+    var controller = GetComponent<CharacterController>();
     playerMovement.enabled = false;
     cameraMovement.enabled = false;
+
+    Vector3 flatForward = Vector3.ProjectOnPlane(forward, Vector3.up).normalized;
+    Vector3 startPos = transform.position;
+    Vector3 targetPos = startPos + flatForward * moveDistance;
+    float elapsed = 0f;
+
+    while (elapsed < moveDuration)
+    {
+      elapsed += Time.deltaTime;
+      float t = Mathf.Clamp01(elapsed / moveDuration);
+      float eased = moveCurve.Evaluate(t);
+      Vector3 nextPos = Vector3.Lerp(startPos, targetPos, eased);
+
+      if (controller != null)
+        controller.Move(nextPos - transform.position);
+      else
+        transform.position = nextPos;
+
+      yield return null;
+    }
 
     yield return new WaitUntil(() => bowlingThrown);
 

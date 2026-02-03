@@ -5,3 +5,10 @@ public enum MinigameType
   Golf,
   Baseball
 }
+
+[System.Serializable]
+public class MinigamePrompt
+{
+  public MinigameType type;
+  public string prompt;
+}

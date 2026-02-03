@@ -13,6 +13,7 @@ public interface IMinigameUseHandler
 public class MinigameInputRouter : NetworkBehaviour
 {
   [SerializeField] private MinigameType activeMinigame = MinigameType.None;
+  public System.Action<MinigameType> OnMinigameChanged;
 
   private IMinigameUseHandler[] handlers;
   private bool wasPressed;
@@ -43,6 +44,7 @@ public class MinigameInputRouter : NetworkBehaviour
   {
     if (!IsOwner) return;
     activeMinigame = type;
+    OnMinigameChanged?.Invoke(activeMinigame);
   }
 
   private void CallPressed()

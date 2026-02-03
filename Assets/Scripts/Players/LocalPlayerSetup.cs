@@ -16,5 +16,10 @@ public class LocalPlayerSetup : NetworkBehaviour
     var nameUi = FindFirstObjectByType<PlayerNameInputUI>(FindObjectsInactive.Include);
     if (name != null && nameUi != null)
       nameUi.Bind(name);
+
+    var router = GetComponent<MinigameInputRouter>();
+    var promptUi = FindFirstObjectByType<MinigamePromptUI>(FindObjectsInactive.Include);
+    if (router != null && promptUi != null)
+      promptUi.Bind(router);
   }
 }

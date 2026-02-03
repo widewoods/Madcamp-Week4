@@ -1140,6 +1140,32 @@ MonoBehaviour:
   ball: {fileID: 5226105332685538081}
   animator: {fileID: 3195669683942912077}
   spawnDistance: 1.2
+  moveDistance: 1.5
+  moveDuration: 2
+  moveCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   bowlingThrown: 0
 --- !u!114 &-2320419949269155122
 MonoBehaviour:
