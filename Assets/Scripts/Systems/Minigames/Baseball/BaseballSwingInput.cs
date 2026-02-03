@@ -17,15 +17,15 @@ public class BaseballSwingInput : NetworkBehaviour
     if (!IsOwner) return;
     if (Keyboard.current == null) return;
     if (!Keyboard.current.fKey.wasPressedThisFrame) return;
-    RequestSwingServerRpc(aimSource.forward);
+    RequestSwingServerRpc(aimSource.position);
   }
 
   [Rpc(SendTo.Server)]
-  private void RequestSwingServerRpc(Vector3 forward, RpcParams rpcParams = default)
+  private void RequestSwingServerRpc(Vector3 position, RpcParams rpcParams = default)
   {
     if (manager == null)
       manager = FindFirstObjectByType<BaseballManager>();
     if (manager == null) return;
-    manager.ServerTrySwing(rpcParams.Receive.SenderClientId, forward);
+    manager.ServerTrySwing(rpcParams.Receive.SenderClientId, position);
   }
 }

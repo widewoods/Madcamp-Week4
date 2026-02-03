@@ -320,7 +320,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7148061724136842653}
   serializedVersion: 5
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDamping: 0.5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -392,6 +392,7 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   rb: {fileID: 1651437490834874360}
   stopSpeed: 0.2
+  stopConfirmTime: 0.2
 --- !u!4 &7528000872212496167 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e065d9c4d1d4b43cfa788d346405a816, type: 3}

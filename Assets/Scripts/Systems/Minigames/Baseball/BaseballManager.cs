@@ -21,7 +21,6 @@ public class BaseballManager : NetworkBehaviour
   [SerializeField] private float maxHitForce = 16f;
 
   private BaseballBall currentBall;
-  private float lastPitchTime;
   private bool pitchScheduled;
 
   private readonly NetworkVariable<float> lastDistance = new NetworkVariable<float>(
@@ -82,6 +81,7 @@ public class BaseballManager : NetworkBehaviour
     if (!IsServer) return;
     if (currentBall != null)
     {
+      DespawnCurrentBall();
       return;
     }
     if (ballPrefab == null || pitcherPoint == null || platePoint == null) return;
@@ -95,10 +95,9 @@ public class BaseballManager : NetworkBehaviour
 
     Vector3 dir = (platePoint.position - pitcherPoint.position).normalized;
     ball.ServerLaunch(dir * pitchSpeed);
-    lastPitchTime = Time.time;
   }
 
-  public void ServerTrySwing(ulong clientId, Vector3 forward)
+  public void ServerTrySwing(ulong clientId, Vector3 position)
   {
     if (!IsServer) return;
     if (currentBall == null) return;
@@ -113,7 +112,7 @@ public class BaseballManager : NetworkBehaviour
     }
 
     float force = Mathf.Lerp(minHitForce, maxHitForce, (plateRadius - dist) / plateRadius);
-    currentBall.ServerHit(forward, force);
+    currentBall.ServerHit(position, force);
     lastHitterId.Value = clientId;
   }
 

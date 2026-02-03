@@ -31,15 +31,18 @@ public class BaseballBall : NetworkBehaviour
     rb.angularVelocity = Vector3.zero;
   }
 
-  public void ServerHit(Vector3 direction, float force)
+  public void ServerHit(Vector3 position, float force)
   {
     if (!IsServer) return;
     if (rb == null) return;
     stopTimer = 0f;
 
-    direction.y = 0f;
+    Vector3 direction = transform.position - position;
+
+
     if (direction.sqrMagnitude < 0.001f) return;
     direction.Normalize();
+    direction.y += 0.2f;
 
     rb.linearVelocity = Vector3.zero;
     rb.angularVelocity = Vector3.zero;
