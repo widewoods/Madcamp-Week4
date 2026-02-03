@@ -1,10 +1,8 @@
 using System.Collections;
 using Unity.Netcode;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
-public class BowlingBallRollInput : NetworkBehaviour
+public class BowlingBallRollInput : NetworkBehaviour, IMinigameUseHandler
 {
   [SerializeField] private BowlingBallRoller ballPrefab;
   [SerializeField] private Transform aimSource;
@@ -20,13 +18,16 @@ public class BowlingBallRollInput : NetworkBehaviour
     if (animator == null) animator = GetComponentInChildren<Animator>();
   }
 
-  private void Update()
+  public MinigameType MinigameType => MinigameType.Bowling;
+
+  public void OnUsePressed()
   {
     if (!IsOwner) return;
-    if (Keyboard.current == null) return;
-    if (!Keyboard.current.fKey.wasPressedThisFrame) return;
     StartCoroutine(StartBowlingAnimation(aimSource.position, aimSource.forward));
   }
+
+  public void OnUseHeld() { }
+  public void OnUseReleased() { }
 
   [Rpc(SendTo.Server)]
   private void RequestSpawnAndRollServerRpc(Vector3 origin, Vector3 forward, RpcParams rpcParams = default)

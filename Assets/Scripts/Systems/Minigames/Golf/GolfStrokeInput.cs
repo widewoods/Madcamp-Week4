@@ -1,9 +1,8 @@
 using Unity.Netcode;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class GolfStrokeInput : NetworkBehaviour
+public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
 {
   [Header("Refs")]
   [SerializeField] private GolfBall ball;
@@ -26,10 +25,13 @@ public class GolfStrokeInput : NetworkBehaviour
     if (ball == null) ball = FindFirstObjectByType<GolfBall>();
   }
 
-  private void Update()
+  public MinigameType MinigameType => MinigameType.Golf;
+
+  public void OnUsePressed() { }
+
+  public void OnUseHeld()
   {
     if (!IsOwner) return;
-    if (Keyboard.current == null) return;
     if (ball == null) return;
     if (ball.IsMoving())
     {
@@ -37,33 +39,37 @@ public class GolfStrokeInput : NetworkBehaviour
       return;
     }
 
-    if (Keyboard.current.fKey.isPressed)
+    float delta = chargeSpeed * Time.deltaTime;
+    charge = chargingUp ? charge + delta : charge - delta;
+    if (charge >= 1f)
     {
-      float delta = chargeSpeed * Time.deltaTime;
-      charge = chargingUp ? charge + delta : charge - delta;
-      if (charge >= 1f)
-      {
-        charge = 1f;
-        chargingUp = false;
-      }
-      else if (charge <= 0f)
-      {
-        charge = 0f;
-        chargingUp = true;
-      }
-      SetPowerBarVisible(true);
-      UpdatePowerBar(charge);
+      charge = 1f;
+      chargingUp = false;
+    }
+    else if (charge <= 0f)
+    {
+      charge = 0f;
+      chargingUp = true;
+    }
+    SetPowerBarVisible(true);
+    UpdatePowerBar(charge);
+  }
+
+  public void OnUseReleased()
+  {
+    if (!IsOwner) return;
+    if (ball == null) return;
+    if (ball.IsMoving())
+    {
+      SetPowerBarVisible(false);
       return;
     }
 
-    if (Keyboard.current.fKey.wasReleasedThisFrame)
-    {
-      float force = Mathf.Lerp(minForce, maxForce, charge);
-      charge = 0f;
-      chargingUp = true;
-      SetPowerBarVisible(false);
-      RequestStrokeServerRpc(aimSource.forward, force);
-    }
+    float force = Mathf.Lerp(minForce, maxForce, charge);
+    charge = 0f;
+    chargingUp = true;
+    SetPowerBarVisible(false);
+    RequestStrokeServerRpc(aimSource.forward, force);
   }
 
   [Rpc(SendTo.Server)]

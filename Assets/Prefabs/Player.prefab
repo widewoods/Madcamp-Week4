@@ -766,6 +766,7 @@ GameObject:
   - component: {fileID: -2320419949269155122}
   - component: {fileID: 8440910446730454711}
   - component: {fileID: 148628492146281925}
+  - component: {fileID: 2082185591866196436}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1128,7 +1129,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8666117378588110265}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 20e85b20ed27f4412b105a648d6c99df, type: 3}
   m_Name: 
@@ -1229,7 +1230,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8666117378588110265}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0ec9ec74fd404e048d95e07b5773ce7, type: 3}
   m_Name: 
@@ -1257,6 +1258,20 @@ MonoBehaviour:
   ShowTopMostFoldoutHeaderGroup: 1
   manager: {fileID: 0}
   aimSource: {fileID: 0}
+--- !u!114 &2082185591866196436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666117378588110265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c653e918369e149358d7d2750f52628d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MinigameInputRouter
+  ShowTopMostFoldoutHeaderGroup: 1
+  activeMinigame: 0
 --- !u!1001 &5771996102048243674
 PrefabInstance:
   m_ObjectHideFlags: 0
