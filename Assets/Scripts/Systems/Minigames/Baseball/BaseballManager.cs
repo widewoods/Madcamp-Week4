@@ -114,6 +114,7 @@ public class BaseballManager : NetworkBehaviour
     float force = Mathf.Lerp(minHitForce, maxHitForce, (plateRadius - dist) / plateRadius);
     currentBall.ServerHit(position, force);
     lastHitterId.Value = clientId;
+    SfxNetEmitter.Instance?.ServerPlay(SfxId.BaseballHit, currentBall.transform.position);
   }
 
   private IEnumerator DespawnAfterSeconds(float seconds)

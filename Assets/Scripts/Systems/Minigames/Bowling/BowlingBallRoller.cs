@@ -10,6 +10,8 @@ public class BowlingBallRoller : NetworkBehaviour
   [Header("Refs")]
   [SerializeField] private Rigidbody rb;
 
+  private bool hasHitPin;
+
   private void Awake()
   {
     if (rb == null) rb = GetComponent<Rigidbody>();
@@ -39,6 +41,7 @@ public class BowlingBallRoller : NetworkBehaviour
   {
     if (rb == null) return;
 
+    hasHitPin = false;
     forward.y = 0f;
     if (forward.sqrMagnitude < 0.001f) return;
     forward.Normalize();
@@ -48,5 +51,20 @@ public class BowlingBallRoller : NetworkBehaviour
 
     Vector3 force = forward * rollForce + Vector3.up * upwardForce;
     rb.AddForce(force, ForceMode.VelocityChange);
+  }
+
+  private void OnCollisionEnter(Collision collision)
+  {
+    if (!IsServer) return;
+    if (hasHitPin) return;
+
+    if (collision.collider == null) return;
+    if (collision.collider.GetComponentInParent<PinVisibility>() == null) return;
+
+    hasHitPin = true;
+    Vector3 hitPoint = collision.contacts != null && collision.contacts.Length > 0
+      ? collision.contacts[0].point
+      : transform.position;
+    SfxNetEmitter.Instance?.ServerPlay(SfxId.BowlingPinKnock, hitPoint);
   }
 }

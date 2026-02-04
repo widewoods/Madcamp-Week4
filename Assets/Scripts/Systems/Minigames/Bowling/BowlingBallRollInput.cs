@@ -38,6 +38,8 @@ public class BowlingBallRollInput : NetworkBehaviour, IMinigameUseHandler
     if (!IsServer) return;
     if (ballPrefab == null) return;
 
+    SfxNetEmitter.Instance?.ServerPlay(SfxId.BowlingBallThrow, origin);
+
     forward.y = 0f;
     if (forward.sqrMagnitude < 0.001f) return;
     forward.Normalize();

@@ -29,5 +29,7 @@ public class GolfBall : NetworkBehaviour
     rb.linearVelocity = Vector3.zero;
     rb.angularVelocity = Vector3.zero;
     rb.AddForce(direction * force, ForceMode.VelocityChange);
+
+    SfxNetEmitter.Instance?.ServerPlay(SfxId.GolfHit, transform.position);
   }
 }
