@@ -12,6 +12,12 @@ public class MinigameUIVisibility : MonoBehaviour
     if (root != null) root.SetActive(false);
   }
 
+  void OnEnable()
+  {
+    if (router != null)
+      router.OnMinigameChanged += HandleMinigameChanged;
+  }
+
   void OnDisable()
   {
     if (router != null)

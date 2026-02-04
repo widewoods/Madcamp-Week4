@@ -9,6 +9,7 @@ public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
   [SerializeField] private GolfManager manager;
   [SerializeField] private Transform aimSource;
   [SerializeField] private Image powerBar;
+  [SerializeField] private Image powerBarBackground;
 
   [Header("Power")]
   [SerializeField] private float minForce = 2f;
@@ -93,6 +94,7 @@ public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
   private void SetPowerBarVisible(bool visible)
   {
     if (powerBar == null) return;
+    powerBarBackground.enabled = visible;
     powerBar.enabled = visible;
   }
 }

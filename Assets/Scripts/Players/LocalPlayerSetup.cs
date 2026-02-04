@@ -28,7 +28,6 @@ public class LocalPlayerSetup : NetworkBehaviour
       foreach (var minigameUi in minigameUis)
       {
         minigameUi.Bind(router);
-        Debug.Log("Minigame UI bound");
       }
     }
   }
