@@ -9,11 +9,15 @@ public class NGOPlayerMovement : NetworkBehaviour
   [SerializeField] float deceleration = 16f;
   [SerializeField] float iceAcceleration = 3f;
   [SerializeField] float iceDeceleration = 2f;
+  [SerializeField] float rotateSpeed = 6f;
 
   [SerializeField] float gravity = -20f;
   [SerializeField] float jumpHeight = 1.5f;
 
   [SerializeField] PlayerInput playerInput;
+  [SerializeField] Transform cameraPivot;
+  [SerializeField] Transform model;
+  [SerializeField] float modelYawOffset = 0f;
 
   CharacterController controller;
   InputAction moveAction;
@@ -84,9 +88,16 @@ public class NGOPlayerMovement : NetworkBehaviour
     if (input.sqrMagnitude > 1f) input.Normalize();
 
 
-    Vector3 moveDir = transform.right * input.x + transform.forward * input.z;
+    Vector3 moveDir = cameraPivot.right * input.x + cameraPivot.forward * input.z;
     moveDir.y = 0f;
+
     if (moveDir.sqrMagnitude > 1f) moveDir.Normalize();
+
+    if (moveDir.sqrMagnitude > 0.0001f && model != null)
+    {
+      Quaternion targetRot = Quaternion.LookRotation(moveDir, Vector3.up) * Quaternion.Euler(0f, modelYawOffset, 0f);
+      model.rotation = Quaternion.Slerp(model.rotation, targetRot, rotateSpeed * Time.deltaTime);
+    }
 
     if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
 

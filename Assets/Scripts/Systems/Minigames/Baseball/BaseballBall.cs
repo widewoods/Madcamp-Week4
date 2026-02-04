@@ -27,6 +27,7 @@ public class BaseballBall : NetworkBehaviour
     if (rb == null) return;
     inPlay = false;
     stopTimer = 0f;
+    velocity.y += 0.2f;
     rb.linearVelocity = velocity;
     rb.angularVelocity = Vector3.zero;
   }
@@ -42,7 +43,7 @@ public class BaseballBall : NetworkBehaviour
 
     if (direction.sqrMagnitude < 0.001f) return;
     direction.Normalize();
-    direction.y += 0.2f;
+    direction.y += 0.3f;
 
     rb.linearVelocity = Vector3.zero;
     rb.angularVelocity = Vector3.zero;

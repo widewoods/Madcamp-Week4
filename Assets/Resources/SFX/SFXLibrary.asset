@@ -31,3 +31,12 @@ MonoBehaviour:
     minDistance: 5
     maxDistance: 20
     mixerGroup: {fileID: 0}
+  - id: 1
+    clips:
+    - {fileID: 8300000, guid: 481d93ff2e8f44472aca90cf38199c38, type: 3}
+    volume: 0.5
+    pitchRange: {x: 0.8, y: 1.2}
+    spatial: 1
+    minDistance: 5
+    maxDistance: 20
+    mixerGroup: {fileID: 0}

@@ -107,7 +107,7 @@ public class BaseballManager : NetworkBehaviour
     if (dist > plateRadius)
     {
       lastDistance.Value = 0;
-      StartCoroutine(DespawnAfterSeconds(1));
+      DespawnAfterSeconds(10);
       return;
     }
 
@@ -117,7 +117,7 @@ public class BaseballManager : NetworkBehaviour
     SfxNetEmitter.Instance?.ServerPlay(SfxId.BaseballHit, currentBall.transform.position);
   }
 
-  private IEnumerator DespawnAfterSeconds(float seconds)
+  IEnumerator DespawnAfterSeconds(float seconds)
   {
     yield return new WaitForSeconds(seconds);
 

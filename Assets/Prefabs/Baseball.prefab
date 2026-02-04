@@ -103,7 +103,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.03529412, g: 0.17254902, b: 0.5411765, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
       key1: {r: 0.03529412, g: 0.17254902, b: 0.5411765, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
@@ -209,6 +209,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e065d9c4d1d4b43cfa788d346405a816, type: 3}
       propertyPath: m_Name
       value: Baseball
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e065d9c4d1d4b43cfa788d346405a816, type: 3}
+      propertyPath: m_TagString
+      value: Minigame
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -30,5 +30,14 @@ public class LocalPlayerSetup : NetworkBehaviour
         minigameUi.Bind(router);
       }
     }
+
+    var minigameObjects = FindObjectsByType<MinigameObjectVisibility>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    if (router != null && minigameObjects != null)
+    {
+      foreach (var obj in minigameObjects)
+      {
+        obj.Bind(router);
+      }
+    }
   }
 }

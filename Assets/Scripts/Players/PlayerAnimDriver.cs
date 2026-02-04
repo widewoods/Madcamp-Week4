@@ -8,6 +8,8 @@ public class PlayerAnimDriver : NetworkBehaviour
   [SerializeField] BowlingBallRollInput bowlingBallRollInput;
   [SerializeField] GameObject ball;
   [SerializeField] CharacterController cc;
+  [SerializeField] GameObject baseballBat;
+  [SerializeField] BaseballSwingInput baseballSwingInput;
 
   void Reset()
   {
@@ -32,5 +34,23 @@ public class PlayerAnimDriver : NetworkBehaviour
     ball.SetActive(false);
 
     animator.SetTrigger("Idle");
+  }
+
+  public void Idle()
+  {
+    animator.SetTrigger("Idle");
+  }
+
+  public void OnBaseballAnimationFinished()
+  {
+    if (baseballBat != null)
+      baseballBat.SetActive(false);
+    baseballSwingInput.OnBaseballAnimationFinished();
+
+  }
+
+  public void OnBaseballSwing()
+  {
+    baseballSwingInput.AnimationTimingSwing();
   }
 }

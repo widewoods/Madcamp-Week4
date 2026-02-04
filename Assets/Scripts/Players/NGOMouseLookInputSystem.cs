@@ -109,8 +109,8 @@ public class NGOMouseLookInputSystem : NetworkBehaviour
     yaw = Mathf.SmoothDamp(yaw, targetYaw, ref yawVelocity, lookSmoothTime, lookMaxSpeed);
     pitch = Mathf.SmoothDamp(pitch, targetPitch, ref pitchVelocity, lookSmoothTime, lookMaxSpeed);
 
-    transform.rotation = Quaternion.Euler(0f, yaw, 0f);
-    cameraPivot.localRotation = Quaternion.Euler(pitch, 0f, 0f);
+    // transform.rotation = Quaternion.Euler(0f, yaw, 0f);
+    cameraPivot.localRotation = Quaternion.Euler(pitch, yaw, 0f);
 
     if (Keyboard.current != null && Keyboard.current.escapeKey.wasPressedThisFrame)
     {
