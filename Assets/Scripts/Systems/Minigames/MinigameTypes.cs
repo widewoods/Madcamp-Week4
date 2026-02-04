@@ -3,7 +3,8 @@ public enum MinigameType
   None,
   Bowling,
   Golf,
-  Baseball
+  Baseball,
+  Iceskate
 }
 
 [System.Serializable]

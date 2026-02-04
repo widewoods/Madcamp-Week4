@@ -57,6 +57,6 @@ public class MinigamePromptUI : MonoBehaviour
       if (p.type == type && !string.IsNullOrWhiteSpace(p.prompt))
         return p.prompt;
     }
-    return "Press F";
+    return "";
   }
 }

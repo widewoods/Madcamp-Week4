@@ -27,6 +27,9 @@ public class NGOPlayerMovement : NetworkBehaviour
   private Vector3 horizontalVelocity;
   private bool onIce;
 
+  public bool IsOnIce => onIce;
+  public float HorizontalSpeed => new Vector3(horizontalVelocity.x, 0f, horizontalVelocity.z).magnitude;
+
   public override void OnNetworkSpawn()
   {
     if (playerInput == null) playerInput = GetComponent<PlayerInput>();
