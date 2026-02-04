@@ -27,13 +27,13 @@ public class BowlingScoreUI : MonoBehaviour
     if (score != lastScore)
     {
       lastScore = score;
-      if (scoreText != null) scoreText.text = $"Score: {score}";
+      if (scoreText != null) scoreText.text = $"점수: {score}";
     }
 
     if (shots != lastShots)
     {
       lastShots = shots;
-      if (shotsText != null) shotsText.text = $"Shots: {shots}/2";
+      if (shotsText != null) shotsText.text = $"굴린 공: {shots}/2";
     }
   }
 }

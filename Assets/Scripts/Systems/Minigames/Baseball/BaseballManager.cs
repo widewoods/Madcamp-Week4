@@ -1,3 +1,4 @@
+using System.Collections;
 using Unity.Netcode;
 using UnityEngine;
 
@@ -53,11 +54,10 @@ public class BaseballManager : NetworkBehaviour
     if (!IsServer) return;
     if (currentBall == null) return;
     if (!currentBall.InPlay) return;
-    if (!currentBall.IsStopped()) return;
-
     float distance = Vector3.Distance(currentBall.HitStartPosition, currentBall.transform.position);
     lastDistance.Value = distance;
-    Debug.Log(distance);
+    if (!currentBall.IsStopped()) return;
+
     DespawnCurrentBall();
   }
 
@@ -81,7 +81,6 @@ public class BaseballManager : NetworkBehaviour
     if (!IsServer) return;
     if (currentBall != null)
     {
-      DespawnCurrentBall();
       return;
     }
     if (ballPrefab == null || pitcherPoint == null || platePoint == null) return;
@@ -107,13 +106,21 @@ public class BaseballManager : NetworkBehaviour
     float dist = Vector3.Distance(currentBall.transform.position, platePoint.position);
     if (dist > plateRadius)
     {
-      Debug.Log("Swung when too far");
+      lastDistance.Value = 0;
+      StartCoroutine(DespawnAfterSeconds(1));
       return;
     }
 
     float force = Mathf.Lerp(minHitForce, maxHitForce, (plateRadius - dist) / plateRadius);
     currentBall.ServerHit(position, force);
     lastHitterId.Value = clientId;
+  }
+
+  private IEnumerator DespawnAfterSeconds(float seconds)
+  {
+    yield return new WaitForSeconds(seconds);
+
+    DespawnCurrentBall();
   }
 
   private void DespawnCurrentBall()
