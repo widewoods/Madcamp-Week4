@@ -21,5 +21,15 @@ public class LocalPlayerSetup : NetworkBehaviour
     var promptUi = FindFirstObjectByType<MinigamePromptUI>(FindObjectsInactive.Include);
     if (router != null && promptUi != null)
       promptUi.Bind(router);
+
+    var minigameUis = FindObjectsByType<MinigameUIVisibility>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+    if (router != null && minigameUis != null)
+    {
+      foreach (var minigameUi in minigameUis)
+      {
+        minigameUi.Bind(router);
+        Debug.Log("Minigame UI bound");
+      }
+    }
   }
 }

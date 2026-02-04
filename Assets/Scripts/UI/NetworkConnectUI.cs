@@ -8,7 +8,6 @@ public class NetworkConnectUI : MonoBehaviour
   [Header("References")]
   [SerializeField] private Button hostButton;
   [SerializeField] private Button clientButton;
-  [SerializeField] private TMP_Text statusText;
 
   private void OnEnable()
   {
@@ -45,14 +44,12 @@ public class NetworkConnectUI : MonoBehaviour
     if (NetworkManager.Singleton == null)
     {
       SetButtonsVisible(true);
-      SetStatusText("NetworkManager not found");
       return;
     }
 
     if (!NetworkManager.Singleton.IsClient && !NetworkManager.Singleton.IsServer)
     {
       SetButtonsVisible(true);
-      SetStatusText("Not connected");
       return;
     }
 
@@ -63,11 +60,5 @@ public class NetworkConnectUI : MonoBehaviour
   {
     if (hostButton != null) hostButton.gameObject.SetActive(visible);
     if (clientButton != null) clientButton.gameObject.SetActive(visible);
-    if (statusText != null) statusText.gameObject.SetActive(visible);
-  }
-
-  private void SetStatusText(string text)
-  {
-    if (statusText != null) statusText.text = text;
   }
 }
