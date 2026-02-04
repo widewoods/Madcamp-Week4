@@ -12,7 +12,7 @@
 *.obj filter=lfs diff=lfs merge=lfs -text
 Assets/Resources/*SDF*.asset filter=lfs diff=lfs merge=lfs -text
 *SDF*.asset filter=lfs diff=lfs merge=lfs -text
-
+Assets/TextMesh[[:space:]]Pro/Fonts/*SDF*.asset filter=lfs diff=lfs merge=lfs -text
 Assets/TextMesh[[:space:]]Pro/Fonts/나눔손글씨[[:space:]]고딕[[:space:]]아니고[[:space:]]고딩[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
 Assets/Resources/나눔손글씨[[:space:]]바른히피[[:space:]]SDF.asset filter=lfs diff=lfs merge=lfs -text
 Assets/Resources/나눔손글씨[[:space:]]바른히피[[:space:]]SDF-Underlay.asset filter=lfs diff=lfs merge=lfs -text
