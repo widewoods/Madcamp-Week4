@@ -7461,6 +7461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::IceZone
   isIce: 1
+  skatingWellDelaySeconds: 5
 --- !u!65 &88605375
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -64088,6 +64089,63 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5758393022648847640, guid: b92021ffc576042cfa418560d5923952, type: 3}
   m_PrefabInstance: {fileID: 1431517838}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1432835527
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -9.697369
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0000009618975
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -12.831584
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
+      propertyPath: m_Name
+      value: classroom_02042004
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2a97cd7aca5cc4450b04a49d406f0e2d, type: 3}
 --- !u!64 &1433729866
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -88500,3 +88558,4 @@ SceneRoots:
   - {fileID: 120529616}
   - {fileID: 36646762}
   - {fileID: 533521324}
+  - {fileID: 1432835527}

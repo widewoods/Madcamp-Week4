@@ -10,6 +10,8 @@ public class NGOPlayerMovement : NetworkBehaviour
   [SerializeField] float iceAcceleration = 3f;
   [SerializeField] float iceDeceleration = 2f;
   [SerializeField] float rotateSpeed = 6f;
+  [SerializeField] float iceSpeedMultiplier = 0.9f;
+  [SerializeField] float iceWellSpeedMultiplier = 1.3f;
 
   [SerializeField] float gravity = -20f;
   [SerializeField] float jumpHeight = 1.5f;
@@ -26,6 +28,7 @@ public class NGOPlayerMovement : NetworkBehaviour
   private float verticalVelocity;
   private Vector3 horizontalVelocity;
   private bool onIce;
+  private bool skatingWell;
 
   public bool IsOnIce => onIce;
   public float HorizontalSpeed => new Vector3(horizontalVelocity.x, 0f, horizontalVelocity.z).magnitude;
@@ -114,7 +117,10 @@ public class NGOPlayerMovement : NetworkBehaviour
     float accel = onIce ? iceAcceleration : acceleration;
     float decel = onIce ? iceDeceleration : deceleration;
 
-    Vector3 targetHorizontal = moveDir * moveSpeed;
+    float speed = moveSpeed;
+    if (onIce)
+      speed = moveSpeed * (skatingWell ? iceWellSpeedMultiplier : iceSpeedMultiplier);
+    Vector3 targetHorizontal = moveDir * speed;
     float rate = targetHorizontal.sqrMagnitude > 0.001f ? accel : decel;
     horizontalVelocity = Vector3.Lerp(horizontalVelocity, targetHorizontal, rate * Time.deltaTime);
 
@@ -127,6 +133,11 @@ public class NGOPlayerMovement : NetworkBehaviour
   public void SetIce(bool value)
   {
     onIce = value;
+  }
+
+  public void SetSkatingWell(bool value)
+  {
+    skatingWell = value;
   }
 
 }

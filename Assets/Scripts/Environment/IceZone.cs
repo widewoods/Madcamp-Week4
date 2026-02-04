@@ -14,10 +14,11 @@ public class IceZone : MonoBehaviour
     var mover = other.GetComponentInParent<NGOPlayerMovement>();
     if (mover == null) return;
     mover.SetIce(isIce);
+    mover.SetSkatingWell(false);
     if (animator != null)
     {
       animator.SetBool("IsSkating", true);
-      StartSkatingWellTimer(other, animator);
+      StartSkatingWellTimer(other, animator, mover);
     }
   }
 
@@ -27,6 +28,7 @@ public class IceZone : MonoBehaviour
     var mover = other.GetComponentInParent<NGOPlayerMovement>();
     if (mover == null) return;
     mover.SetIce(false);
+    mover.SetSkatingWell(false);
     if (animator != null)
     {
       animator.SetBool("IsSkating", false);
@@ -35,14 +37,14 @@ public class IceZone : MonoBehaviour
     StopSkatingWellTimer(other);
   }
 
-  private void StartSkatingWellTimer(Collider other, Animator animator)
+  private void StartSkatingWellTimer(Collider other, Animator animator, NGOPlayerMovement mover)
   {
     if (skatingCoroutines.TryGetValue(other, out var running))
     {
       if (running != null) StopCoroutine(running);
       skatingCoroutines.Remove(other);
     }
-    skatingCoroutines[other] = StartCoroutine(EnableSkatingWellAfterDelay(other, animator));
+    skatingCoroutines[other] = StartCoroutine(EnableSkatingWellAfterDelay(other, animator, mover));
   }
 
   private void StopSkatingWellTimer(Collider other)
@@ -52,12 +54,15 @@ public class IceZone : MonoBehaviour
     skatingCoroutines.Remove(other);
   }
 
-  private System.Collections.IEnumerator EnableSkatingWellAfterDelay(Collider other, Animator animator)
+  private System.Collections.IEnumerator EnableSkatingWellAfterDelay(Collider other, Animator animator, NGOPlayerMovement mover)
   {
     if (skatingWellDelaySeconds > 0f)
       yield return new WaitForSeconds(skatingWellDelaySeconds);
 
-    if (other == null || animator == null) yield break;
-    animator.SetBool("IsSkatingWell", true);
+    if (other == null) yield break;
+    if (animator != null)
+      animator.SetBool("IsSkatingWell", true);
+    if (mover != null)
+      mover.SetSkatingWell(true);
   }
 }
