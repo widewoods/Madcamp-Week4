@@ -106,7 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 727818493
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -754,7 +754,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 845319073
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -870,7 +870,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a57f767e5e46a458fc5d3c628d0cbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.Netcode.Runtime::Unity.Netcode.NetworkObject
-  GlobalObjectIdHash: 0
+  GlobalObjectIdHash: 581118719
   InScenePlacedSourceGlobalObjectIdHash: 0
   DeferredDespawnTick: 0
   Ownership: 1
@@ -1205,6 +1205,8 @@ GameObject:
   - component: {fileID: 6757014533420075252}
   - component: {fileID: 4066199457024292430}
   - component: {fileID: 7408809884799966024}
+  - component: {fileID: -9147426716314089625}
+  - component: {fileID: 4559138480046990736}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1872,6 +1874,37 @@ MonoBehaviour:
   targets:
   - {fileID: 6625588660146882698}
   router: {fileID: 0}
+--- !u!114 &-9147426716314089625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666117378588110265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a49b8a75fa5144afb8538b7f03d80d35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DisableMainCameraOnJoin
+  ShowTopMostFoldoutHeaderGroup: 1
+  menuCameraName: Main Camera
+  menuCameraTag: MainCamera
+  fallbackToMainCamera: 1
+--- !u!114 &4559138480046990736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8666117378588110265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073b1dee3add946f394ad9191e511caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::WaveEmoteInput
+  ShowTopMostFoldoutHeaderGroup: 1
+  animator: {fileID: 5167575223358654531}
+  waveTrigger: Wave
 --- !u!1001 &2452548779469658660
 PrefabInstance:
   m_ObjectHideFlags: 0
