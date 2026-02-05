@@ -29,6 +29,11 @@ public class NGOPlayerMovement : NetworkBehaviour
   private Vector3 horizontalVelocity;
   private bool onIce;
   private bool skatingWell;
+  private readonly NetworkVariable<float> modelYaw = new NetworkVariable<float>(
+    0f,
+    NetworkVariableReadPermission.Everyone,
+    NetworkVariableWritePermission.Owner
+  );
 
   public bool IsOnIce => onIce;
   public float HorizontalSpeed => new Vector3(horizontalVelocity.x, 0f, horizontalVelocity.z).magnitude;
@@ -40,13 +45,14 @@ public class NGOPlayerMovement : NetworkBehaviour
     if (!IsOwner)
     {
       playerInput.enabled = false;
-      enabled = false;
       return;
     }
 
     playerInput.enabled = true;
     EnsureActions();
     EnableActions();
+    if (model != null)
+      modelYaw.Value = model.eulerAngles.y;
   }
 
   void OnEnable()
@@ -86,7 +92,12 @@ public class NGOPlayerMovement : NetworkBehaviour
 
   void Update()
   {
-    if (!IsOwner) return;
+    if (!IsOwner)
+    {
+      UpdateRemoteModelRotation();
+      return;
+    }
+
     if (!controller.enabled) return;
 
     Vector2 moveValue = moveAction.ReadValue<Vector2>();
@@ -103,6 +114,7 @@ public class NGOPlayerMovement : NetworkBehaviour
     {
       Quaternion targetRot = Quaternion.LookRotation(moveDir, Vector3.up) * Quaternion.Euler(0f, modelYawOffset, 0f);
       model.rotation = Quaternion.Slerp(model.rotation, targetRot, rotateSpeed * Time.deltaTime);
+      modelYaw.Value = model.eulerAngles.y;
     }
 
     if (controller.isGrounded && verticalVelocity < 0f) verticalVelocity = -2f;
@@ -138,6 +150,13 @@ public class NGOPlayerMovement : NetworkBehaviour
   public void SetSkatingWell(bool value)
   {
     skatingWell = value;
+  }
+
+  private void UpdateRemoteModelRotation()
+  {
+    if (model == null) return;
+    Quaternion target = Quaternion.Euler(0f, modelYaw.Value, 0f);
+    model.rotation = Quaternion.Slerp(model.rotation, target, rotateSpeed * Time.deltaTime);
   }
 
 }

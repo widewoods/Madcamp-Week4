@@ -1,6 +1,7 @@
+using Unity.Netcode;
 using UnityEngine;
 
-public class MinigameObjectVisibility : MonoBehaviour
+public class MinigameObjectVisibility : NetworkBehaviour
 {
   [Header("Rules")]
   [SerializeField] private MinigameType minigameType = MinigameType.None;
@@ -12,9 +13,26 @@ public class MinigameObjectVisibility : MonoBehaviour
   [Header("Refs")]
   [SerializeField] private MinigameInputRouter router;
 
+  private readonly NetworkVariable<bool> isVisible = new NetworkVariable<bool>(
+    false,
+    NetworkVariableReadPermission.Everyone,
+    NetworkVariableWritePermission.Server
+  );
+
   private void Awake()
   {
     ApplyVisibility(false);
+  }
+
+  public override void OnNetworkSpawn()
+  {
+    isVisible.OnValueChanged += OnVisibleChanged;
+    OnVisibleChanged(false, isVisible.Value);
+  }
+
+  public override void OnNetworkDespawn()
+  {
+    isVisible.OnValueChanged -= OnVisibleChanged;
   }
 
   private void OnEnable()
@@ -51,8 +69,21 @@ public class MinigameObjectVisibility : MonoBehaviour
 
   private void HandleMinigameChanged(MinigameType type)
   {
+    if (!IsSpawned || !IsClient) return;
     bool active = type == minigameType;
-    ApplyVisibility(showWhenActive ? active : !active);
+    RequestSetVisibleServerRpc(showWhenActive ? active : !active);
+  }
+
+  [Rpc(SendTo.Server)]
+  private void RequestSetVisibleServerRpc(bool visible)
+  {
+    if (!IsServer) return;
+    isVisible.Value = visible;
+  }
+
+  private void OnVisibleChanged(bool previous, bool current)
+  {
+    ApplyVisibility(current);
   }
 
   private void ApplyVisibility(bool visible)
@@ -60,8 +91,9 @@ public class MinigameObjectVisibility : MonoBehaviour
     if (targets == null) return;
     for (int i = 0; i < targets.Length; i++)
     {
-      if (targets[i] != null)
-        targets[i].SetActive(visible);
+      var target = targets[i];
+      if (target == null) continue;
+      target.SetActive(visible);
     }
   }
 }

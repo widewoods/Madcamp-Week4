@@ -45,9 +45,6 @@ public class SeatInteractable : InteractableBase
     var seating = playerObj.GetComponent<PlayerSeating>();
     if (seating == null) return;
 
-    var anim = playerObj.gameObject.GetComponentInChildren<Animator>(true);
-    if (anim == null) Debug.Log("Cannot find animator");
-
     if (IsOccupied)
     {
       if (clientId != occupiedBy.Value) return;
@@ -58,7 +55,6 @@ public class SeatInteractable : InteractableBase
       var rotation = target.rotation * Quaternion.Euler(0f, yawOffset, 0f);
 
       teleport.ServerTeleport(target.position, rotation);
-      anim.SetTrigger("Idle");
       seating.ServerSetSeated(false);
       manager.ServerSeatVacated(seatId, clientId);
       return;
@@ -70,7 +66,6 @@ public class SeatInteractable : InteractableBase
     var seatRotation = seatTarget.rotation * Quaternion.Euler(0f, yawOffset, 0f);
 
     teleport.ServerTeleport(seatTarget.position, seatRotation);
-    anim.SetTrigger("Seating");
     seating.ServerSetSeated(true);
     manager.ServerSeatOccupied(seatId, clientId);
   }

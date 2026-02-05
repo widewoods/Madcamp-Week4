@@ -13,14 +13,12 @@ public class PlayerSeating : NetworkBehaviour
 
   public override void OnNetworkSpawn()
   {
-    if (!IsOwner) return;
     isSeated.OnValueChanged += OnSeatedChanged;
     OnSeatedChanged(false, isSeated.Value);
   }
 
   public override void OnNetworkDespawn()
   {
-    if (!IsOwner) return;
     isSeated.OnValueChanged -= OnSeatedChanged;
   }
 
@@ -32,10 +30,17 @@ public class PlayerSeating : NetworkBehaviour
 
   private void OnSeatedChanged(bool previous, bool current)
   {
-    var movement = GetComponent<NGOPlayerMovement>();
-    if (movement != null) movement.enabled = !current;
+    if (IsOwner)
+    {
+      var movement = GetComponent<NGOPlayerMovement>();
+      if (movement != null) movement.enabled = !current;
 
-    var controller = GetComponent<CharacterController>();
-    if (controller != null) controller.enabled = !current;
+      var controller = GetComponent<CharacterController>();
+      if (controller != null) controller.enabled = !current;
+    }
+
+    var animator = GetComponentInChildren<Animator>(true);
+    if (animator != null)
+      animator.SetTrigger(current ? "Seating" : "Idle");
   }
 }
