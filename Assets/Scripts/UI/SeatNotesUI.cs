@@ -11,6 +11,8 @@ public class SeatNotesUI : MonoBehaviour
   [SerializeField] private Button submitButton;
   [SerializeField] private Button closeButton;
   [SerializeField] private GameObject root;
+  [SerializeField] private SeatNotesBackgroundBySeat backgroundBySeat;
+  [SerializeField] private SeatNotesGridUI notesGridUI;
 
   private int currentSeatId = -1;
 
@@ -36,6 +38,8 @@ public class SeatNotesUI : MonoBehaviour
   {
     currentSeatId = seatId;
     if (root != null) root.SetActive(true);
+    if (backgroundBySeat != null)
+      backgroundBySeat.ApplySeatBackground(seatId);
 
     var service = NotesService.Instance;
     if (service == null) return;
@@ -59,6 +63,12 @@ public class SeatNotesUI : MonoBehaviour
     if (service == null) return;
 
     var notes = service.GetNotesForSeat(currentSeatId);
+    if (notesGridUI != null)
+    {
+      notesGridUI.Render(notes);
+      return;
+    }
+
     var sb = new StringBuilder();
     foreach (var note in notes)
     {

@@ -58,7 +58,6 @@ public class PlayerAnimDriver : NetworkBehaviour
     if (baseballBat != null)
       baseballBat.SetActive(false);
     baseballSwingInput.OnBaseballAnimationFinished();
-
   }
 
 

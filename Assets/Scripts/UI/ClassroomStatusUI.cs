@@ -9,6 +9,7 @@ public class ClassroomStatusUI : MonoBehaviour
   [SerializeField] private ClassroomManager classroomManager;
   [SerializeField] private TMP_Text statusText;
   [SerializeField] private Button hostStartButton;
+  [SerializeField] private GameObject root;
 
   private int lastSeated;
   private int lastRequired;
@@ -70,6 +71,7 @@ public class ClassroomStatusUI : MonoBehaviour
     if (classroomManager == null) return;
     Debug.Log("Start Pressed");
     classroomManager.RequestStartServerRpc();
+    root.SetActive(false);
   }
 
   private void UpdateStatusText()
