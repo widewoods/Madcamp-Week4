@@ -22,9 +22,9 @@ public class SeatInteractable : InteractableBase
   {
     get
     {
-      if (!IsOccupied) return "Sit";
-      if (NetworkManager.Singleton == null) return "Occupied";
-      return occupiedBy.Value == NetworkManager.Singleton.LocalClientId ? "Stand" : "Occupied";
+      if (!IsOccupied) return "앉기";
+      if (NetworkManager.Singleton == null) return "누군가 앉아있습니다";
+      return occupiedBy.Value == NetworkManager.Singleton.LocalClientId ? "일어서기" : "누군가 앉아있습니다";
     }
   }
 
@@ -34,6 +34,7 @@ public class SeatInteractable : InteractableBase
 
     var manager = GetManagerServer();
     if (manager == null) return;
+    
 
     var playerObj = NetworkManager.Singleton.SpawnManager.GetPlayerNetworkObject(clientId);
     if (playerObj == null) return;

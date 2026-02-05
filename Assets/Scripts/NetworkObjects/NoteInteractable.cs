@@ -11,8 +11,8 @@ public class NoteInteractable : InteractableBase
   {
     get
     {
-      if (seat != null && seat.IsOccupied) return "Occupied";
-      return "Write Note";
+      if (seat != null && seat.IsOccupied) return "누군가 쓰고 있습니다";
+      return "롤링페이퍼 쓰기";
     }
   }
 

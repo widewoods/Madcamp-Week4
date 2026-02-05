@@ -8,6 +8,7 @@ public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
   [SerializeField] private GolfBall ball;
   [SerializeField] private GolfManager manager;
   [SerializeField] private Transform aimSource;
+  [SerializeField] private Animator animator;
   [SerializeField] private Image powerBar;
   [SerializeField] private Image powerBarBackground;
 
@@ -15,15 +16,20 @@ public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
   [SerializeField] private float minForce = 2f;
   [SerializeField] private float maxForce = 12f;
   [SerializeField] private float chargeSpeed = 6f;
+  [SerializeField] private string golfTrigger = "Golf";
 
   private float charge;
   private bool chargingUp = true;
+  private bool pendingStroke;
+  private Vector3 pendingForward;
+  private float pendingForce;
 
   private void Awake()
   {
     if (aimSource == null) aimSource = transform;
     if (manager == null) manager = FindFirstObjectByType<GolfManager>();
     if (ball == null) ball = FindFirstObjectByType<GolfBall>();
+    if (animator == null) animator = GetComponentInChildren<Animator>();
   }
 
   public MinigameType MinigameType => MinigameType.Golf;
@@ -70,7 +76,32 @@ public class GolfStrokeInput : NetworkBehaviour, IMinigameUseHandler
     charge = 0f;
     chargingUp = true;
     SetPowerBarVisible(false);
-    RequestStrokeServerRpc(aimSource.forward, force);
+
+    if (animator != null && !string.IsNullOrWhiteSpace(golfTrigger))
+    {
+      pendingStroke = true;
+      pendingForward = -aimSource.forward;
+      pendingForce = force;
+      animator.SetTrigger(golfTrigger);
+      return;
+    }
+
+    RequestStrokeServerRpc(-aimSource.forward, force);
+  }
+
+  // Hook this from an animation event at the impact frame.
+  public void AnimationTimingStroke()
+  {
+    if (!IsOwner) return;
+    if (!pendingStroke) return;
+    if (ball == null || ball.IsMoving())
+    {
+      pendingStroke = false;
+      return;
+    }
+
+    pendingStroke = false;
+    RequestStrokeServerRpc(pendingForward, pendingForce);
   }
 
   [Rpc(SendTo.Server)]

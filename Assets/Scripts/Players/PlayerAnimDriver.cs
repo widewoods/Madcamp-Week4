@@ -10,6 +10,9 @@ public class PlayerAnimDriver : NetworkBehaviour
   [SerializeField] CharacterController cc;
   [SerializeField] GameObject baseballBat;
   [SerializeField] BaseballSwingInput baseballSwingInput;
+  [SerializeField] GolfStrokeInput golfStrokeInput;
+  [SerializeField] GameObject golfClub;
+
 
   void Reset()
   {
@@ -39,6 +42,7 @@ public class PlayerAnimDriver : NetworkBehaviour
   public void Idle()
   {
     animator.SetTrigger("Idle");
+    golfClub.SetActive(false);
   }
 
   public void OnBaseballAnimationFinished()
@@ -49,8 +53,22 @@ public class PlayerAnimDriver : NetworkBehaviour
 
   }
 
+
+
   public void OnBaseballSwing()
   {
     baseballSwingInput.AnimationTimingSwing();
+    SfxManager.Instance?.Play3D(SfxId.GolfSwing, transform.position, 0.6f);
+  }
+
+  public void OnGolfStart()
+  {
+    golfClub.SetActive(true);
+  }
+
+  public void OnGolfSwing()
+  {
+    if (golfStrokeInput != null)
+      golfStrokeInput.AnimationTimingStroke();
   }
 }

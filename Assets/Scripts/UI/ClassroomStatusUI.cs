@@ -76,7 +76,7 @@ public class ClassroomStatusUI : MonoBehaviour
   {
     if (statusText == null) return;
     string seatedInfo = lastRequired > 0 ? $"{lastSeated}/{lastRequired}" : $"{lastSeated}";
-    statusText.text = lastStarted ? $"Started ({seatedInfo})" : $"Seated {seatedInfo}";
+    statusText.text = lastStarted ? $"시작됨 ({seatedInfo})" : $"앉은 사람 {seatedInfo}";
   }
 
   private void RefreshHostButton()

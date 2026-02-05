@@ -4,5 +4,6 @@ public enum SfxId
   BaseballHit,
   BowlingBallThrow,
   BowlingPinKnock,
-  GolfHit
+  GolfHit,
+  GolfSwing
 }

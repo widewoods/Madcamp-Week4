@@ -65,7 +65,7 @@ public class SeatNotesUI : MonoBehaviour
       sb.AppendLine(note.content);
     }
 
-    notesText.text = sb.Length > 0 ? sb.ToString() : "No notes yet.";
+    notesText.text = sb.Length > 0 ? sb.ToString() : "아직 쓴 롤링페이퍼가 없습니다";
   }
 
   private void HandleSubmit()

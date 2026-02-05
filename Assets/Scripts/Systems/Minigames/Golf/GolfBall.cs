@@ -14,7 +14,13 @@ public class GolfBall : NetworkBehaviour
   public bool IsMoving()
   {
     if (rb == null) return false;
-    return rb.linearVelocity.magnitude > stopSpeed;
+    if (rb.linearVelocity.magnitude > stopSpeed)
+    {
+      rb.linearVelocity = Vector3.zero;
+      rb.angularVelocity = Vector3.zero;
+      return true;
+    }
+    return false;
   }
 
   public void ServerStroke(Vector3 direction, float force)

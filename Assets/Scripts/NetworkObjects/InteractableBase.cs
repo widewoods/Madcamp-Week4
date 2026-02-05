@@ -3,7 +3,7 @@ using UnityEngine;
 
 public abstract class InteractableBase : NetworkBehaviour
 {
-  [SerializeField] private string prompt = "Interact";
+  [SerializeField] private string prompt = "상호작용";
 
   public virtual string Prompt => prompt;
 
