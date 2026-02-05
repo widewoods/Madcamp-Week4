@@ -3,11 +3,9 @@ using UnityEngine;
 
 public class PlayerTeleport : NetworkBehaviour
 {
-  [Rpc(SendTo.Owner)]
+  [Rpc(SendTo.ClientsAndHost)]
   private void TeleportClientRpc(Vector3 position, Quaternion rotation)
   {
-    if (!IsOwner) return;
-
     var controller = GetComponent<CharacterController>();
     if (controller != null) controller.enabled = false;
 

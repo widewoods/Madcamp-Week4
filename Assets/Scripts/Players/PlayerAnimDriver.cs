@@ -13,6 +13,11 @@ public class PlayerAnimDriver : NetworkBehaviour
   [SerializeField] GolfStrokeInput golfStrokeInput;
   [SerializeField] GameObject golfClub;
 
+  private readonly NetworkVariable<float> syncedSpeed = new NetworkVariable<float>(
+    0f,
+    NetworkVariableReadPermission.Everyone,
+    NetworkVariableWritePermission.Owner
+  );
 
   void Reset()
   {
@@ -22,13 +27,16 @@ public class PlayerAnimDriver : NetworkBehaviour
 
   void Update()
   {
-    if (!IsOwner) return;
     if (animator == null || cc == null) return;
 
     Vector3 v = cc.velocity;
     v.y = 0f;
+    float speed = v.magnitude;
 
-    animator.SetFloat("Speed", v.magnitude);
+    if (IsOwner)
+      syncedSpeed.Value = speed;
+
+    animator.SetFloat("Speed", syncedSpeed.Value);
   }
 
   public void BowlingTrigger()
